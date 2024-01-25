@@ -5,9 +5,7 @@ import {
   getCoreRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { useMemo } from "react";
 import { useGetUsersQuery } from "../ReduxQuery/jsonServerApi";
-import { table } from "console";
    
 interface Product {
   id: number;
@@ -69,7 +67,7 @@ export default function Table02() {
   const products = data || []; // Provide a default value (empty array) if data is undefined
 
 
-  const rerender = React.useReducer(() => ({}), {})[1];
+  // const rerender = React.useReducer(() => ({}), {})[1];
 
   const table = useReactTable({
     data:products,

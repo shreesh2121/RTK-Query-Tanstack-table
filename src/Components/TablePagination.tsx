@@ -14,8 +14,6 @@ import {
   ColumnResizeMode,
   
 } from "@tanstack/react-table";
-import { useMemo } from "react";
-import { table } from "console";
 import { useGetUsersQuery } from "../ReduxQuery/jsonServerApi";
    
 interface Product {
@@ -86,7 +84,7 @@ export default function TablePagination() {
   const { data, error, isLoading } = useGetUsersQuery();
   const products = data || []; // Provide a default value (empty array) if data is undefined
 
-  const rerender = React.useReducer(() => ({}), {})[1];
+  // const rerender = React.useReducer(() => ({}), {})[1];
 
 //   To perform sorting we have to create kind of state inside our application
 const [sorting,setSorting]=React.useState<SortingState>([])
