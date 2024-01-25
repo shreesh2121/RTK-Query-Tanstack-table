@@ -3,32 +3,31 @@ name: CI/CD for React app
 on:
   push:
     branches: [main]
-  workflow_dispatch:           // with this we can run it manuallly
-
+  workflow_dispatch:          
 # (We have to give permissions to it other wise it will not deploy on github pages)
 permissions: 
   contents: write
 
 jobs:
   build_and_deploy:
-    run-on: ubuntu-latest   
+    runs-on: ubuntu-latest   
     steps: 
-       -name: Checkout repository
-        uses: actions/checkout@v3        //it first use the actions and then jo server github ne deploy kra hai wha pr isko checkout kr dega means copy kr dega
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-       -name: Setup Node.js
+      - name: Setup Node.js
         uses: action/setup-node@v3
         with:
           node-version: 18
 
-        -name: Install dependencies  
-         run: npm install
+      - name: Install dependencies  
+        run: npm install
 
-        -name: Build Project 
-         run: npm run build
+      - name: Build Project 
+        run: npm run build
 
-        -name: Deploy to Github Pages
-         uses: JamesIves/github-pages-deploy-action@4.1.0
-         with:
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
            branch: gh-pages
            folder: build
